@@ -1770,3 +1770,8 @@ img {
         transform: rotate(calc(var(--amp, 3deg) * -1));
     }
 }
+
+/* ลดช่องว่างใต้ส่วนหัว: ไม่ให้ hero สูงเต็มจอยาวเกินไปบนมือถือ/โหมดเดสก์ท็อป */
+.hero {
+    min-height: min(100svh, 880px);
+}
