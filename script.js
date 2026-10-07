@@ -58,7 +58,7 @@ const characters = [
         description:
             "นักเขียนผู้มีความสัมพันธ์ซับซ้อนกับเรื่องราว ตัวละคร และความจริง",
         quote:
-            "'Ultimatary , every human is their own writer'",
+            "'Ultimately , every human is their own writer'",
         tags: ["นักเขียน", "เจ้าเล่ห์", "ปริศนา"]
     }
 ];
