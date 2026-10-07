@@ -1,0 +1,1772 @@
+/* ========================================
+   1. GLOBAL SETTINGS
+======================================== */
+
+:root {
+    --bg: #050507;
+    --tx: #ECEEF3;
+    --mut: #8E93A3;
+    --ln: #ffffff26;
+    --aura: #fff;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--tx);
+    font: 400 17px/1.8 Sarabun, sans-serif;
+    overflow-x: clip;
+    overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+.ser {
+    font-family: Cinzel, "Noto Serif Thai", serif;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+p,
+li,
+dd,
+dt,
+.quote,
+.sys,
+.kick {
+    overflow-wrap: break-word;
+    word-break: normal;
+    min-width: 0;
+    max-width: 100%;
+}
+
+svg.i {
+    width: 1em;
+    height: 1em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+section {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 84px 22px;
+}
+
+section.container {
+    padding-left: max(22px, env(safe-area-inset-left, 0px));
+    padding-right: max(22px, env(safe-area-inset-right, 0px));
+}
+
+main {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+}
+
+h2 {
+    font-size: clamp(26px, 4.6vw, 40px);
+    letter-spacing: 0.06em;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 1px;
+    background: #fff;
+    margin: 16px auto 0;
+    box-shadow: 0 0 12px #fff;
+}
+
+.rv {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+    transition-delay: var(--d, 0s);
+}
+
+.rv.on {
+    opacity: 1;
+    transform: none;
+}
+
+/* ========================================
+   2. BUTTONS
+======================================== */
+
+.btn-orv {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #fff;
+    border-radius: 0;
+    color: #fff;
+    background: none;
+    text-decoration: none;
+    font: 500 15px Cinzel, "Noto Serif Thai", serif;
+    letter-spacing: 0.2em;
+    line-height: 1.8;
+    margin: 6px 8px;
+    transition: 0.3s;
+}
+
+.btn-orv:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 30px #fff8;
+}
+
+/* ========================================
+   3. INTRO ANIMATION
+======================================== */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: #000;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    transition: opacity 1s, transform 1.2s;
+}
+
+#intro.out {
+    opacity: 0;
+    transform: scale(2.2);
+    pointer-events: none;
+}
+
+.istar {
+    width: 120px;
+    height: 120px;
+    fill: #fff;
+    filter: drop-shadow(0 0 22px #fff);
+    animation: spin 3.6s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(-180deg) scale(0.1);
+        opacity: 0;
+    }
+
+    to {
+        transform: rotate(180deg) scale(1);
+        opacity: 1;
+    }
+}
+
+#intro p {
+    font: 500 15px Cinzel, serif;
+    letter-spacing: 0.4em;
+    opacity: 0;
+    animation: fd 1.5s 1.8s forwards;
+    margin-top: 26px;
+    padding: 0 22px;
+}
+
+@keyframes fd {
+    to {
+        opacity: 1;
+    }
+}
+
+#skip {
+    position: absolute;
+    right: 18px;
+    top: calc(18px + env(safe-area-inset-top, 0px));
+    background: none;
+    border: 1px solid #fff5;
+    color: #fff;
+    padding: 6px 16px;
+    font: 14px Sarabun, sans-serif;
+    cursor: pointer;
+}
+
+/* ========================================
+   4. BACKGROUND EFFECTS
+======================================== */
+
+#sky {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#papers {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+#prog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: #fff;
+    box-shadow: 0 0 12px #fff;
+    z-index: 2100;
+}
+
+#cur {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 260px;
+    margin: -130px 0 0 -130px;
+    border-radius: 50%;
+    background: radial-gradient(#ffffff1c, transparent 65%);
+    pointer-events: none;
+    z-index: 50;
+    mix-blend-mode: screen;
+}
+
+@media (pointer: coarse) {
+    #cur {
+        display: none;
+    }
+}
+
+/* Floating papers */
+
+.pp {
+    position: absolute;
+    bottom: -60px;
+    perspective: 400px;
+    opacity: 0;
+    animation: rise var(--t) linear infinite;
+    animation-delay: var(--dl);
+}
+
+.pp i {
+    display: block;
+    width: var(--w);
+    height: calc(var(--w) * 1.3);
+    border: 1px solid #ffffff55;
+    background:
+        repeating-linear-gradient(
+            transparent 0 6px,
+            #ffffff26 6px 7px
+        ),
+        linear-gradient(135deg, #ffffff1c, #ffffff06);
+    clip-path: polygon(
+        0 0,
+        70% 0,
+        100% 30%,
+        100% 100%,
+        0 100%
+    );
+    animation: flut var(--f) ease-in-out infinite alternate;
+}
+
+@keyframes rise {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0;
+    }
+
+    8%,
+    92% {
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: translate3d(var(--dx), -115vh, 0);
+        opacity: 0;
+    }
+}
+
+@keyframes flut {
+    from {
+        transform: rotateX(0) rotateY(-50deg) rotateZ(-20deg);
+    }
+
+    to {
+        transform: rotateX(70deg) rotateY(60deg) rotateZ(40deg);
+    }
+}
+
+/* ========================================
+   5. NAVIGATION
+======================================== */
+
+.orv-nav {
+    background: linear-gradient(#000d, #0000);
+    padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+}
+
+.orv-nav .navbar-brand {
+    color: #fff;
+    font: 700 16px Cinzel, serif;
+    letter-spacing: 0.3em;
+}
+
+.orv-nav .nav-link {
+    font: 500 13px Cinzel, "Noto Serif Thai", serif;
+    letter-spacing: 0.18em;
+    color: #cfd3df;
+}
+
+.orv-nav .nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 12px #fff;
+}
+
+@media (max-width: 767px) {
+    .orv-nav .navbar-collapse {
+        background: #000000ee;
+        padding: 8px 0;
+    }
+}
+
+/* ========================================
+   6. HERO SECTION — TRAIN WINDOW
+======================================== */
+
+.hero {
+    max-width: none;
+    min-height: 100vh;
+    padding: 70px 0 40px;
+    background: linear-gradient(#0008, #15171c99 60%, #0a0b0e66);
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.straps {
+    display: flex;
+    justify-content: space-around;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 70px;
+}
+
+.strap {
+    width: 2px;
+    height: 48px;
+    background: #9aa;
+    transform-origin: top;
+    animation: sw 3.2s ease-in-out infinite alternate;
+    position: relative;
+}
+
+.strap::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 40px;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #9aa;
+    border-radius: 50%;
+}
+
+.strap:nth-child(2n) {
+    animation-delay: -1.4s;
+}
+
+.strap:nth-child(3n) {
+    animation-delay: -0.7s;
+}
+
+@keyframes sw {
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+.win {
+    width: min(900px, 92vw);
+    height: 230px;
+    margin: 10px auto 0;
+    border: 10px solid #2b2e36;
+    border-radius: 26px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    box-shadow:
+        inset 0 0 50px #000,
+        0 0 60px #ffffff14;
+}
+
+.win i {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1.6px 1.6px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 80px, #fff, transparent),
+        radial-gradient(2px 2px at 150px 20px, #fff, transparent),
+        radial-gradient(1px 1px at 60px 110px, #ccd, transparent);
+    background-size: 200px 130px;
+    animation: dr 5s linear infinite;
+}
+
+.win i + i {
+    background-size: 330px 210px;
+    opacity: 0.55;
+    animation-duration: 11s;
+}
+
+@keyframes dr {
+    to {
+        background-position-x: -400px;
+    }
+}
+
+.win::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    margin-left: -5px;
+    background: #2b2e36;
+}
+
+.hero .t {
+    position: relative;
+    padding: 34px 22px 0;
+}
+
+.hero .q {
+    font: 500 14px Cinzel, serif;
+    letter-spacing: 0.3em;
+    color: var(--mut);
+}
+
+.hero h1 {
+    font-size: clamp(34px, 8.6vw, 78px);
+    letter-spacing: 0.3em;
+    margin: 14px 0 6px;
+    padding-left: 0.3em;
+    background: linear-gradient(
+        100deg,
+        #8a8f9c 15%,
+        #fff 45%,
+        #8a8f9c 75%
+    );
+    background-size: 260%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 14px #fff6);
+    animation: sh 7s linear infinite;
+}
+
+.hero h1 b {
+    font-size: 1.25em;
+    text-shadow: 0 0 26px #fff;
+}
+
+@keyframes sh {
+    from {
+        background-position: 130% 0;
+    }
+
+    to {
+        background-position: -130% 0;
+    }
+}
+
+.hero .th {
+    font: 700 clamp(22px, 4vw, 34px) "Noto Serif Thai", serif;
+    letter-spacing: 0.1em;
+}
+
+.hero .sub {
+    font: 500 12px Cinzel, serif;
+    letter-spacing: 0.35em;
+    color: var(--mut);
+    margin: 12px 0 20px;
+}
+
+.seat {
+    width: min(900px, 92vw);
+    height: 26px;
+    margin: 26px auto 0;
+    border-radius: 14px 14px 0 0;
+    background: linear-gradient(#cfd2da, #6d717c);
+    opacity: 0.85;
+}
+
+/* ========================================
+   7. DIVIDERS
+======================================== */
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 6px 22px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffffff88);
+}
+
+.divider::after {
+    transform: scaleX(-1);
+}
+
+.divider svg {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+    filter: drop-shadow(0 0 8px #fff);
+    animation: rot 20s linear infinite;
+}
+
+/* ========================================
+   8. STORY INFORMATION
+======================================== */
+
+.trio {
+    display: flex;
+    justify-content: center;
+    gap: clamp(30px, 9vw, 90px);
+    text-align: center;
+    font: 500 13px Cinzel, serif;
+    letter-spacing: 0.2em;
+}
+
+.trio div {
+    font-size: 13px;
+}
+
+.trio .i {
+    display: block;
+    margin: 0 auto 10px;
+    font-size: 54px;
+    filter: drop-shadow(0 0 10px #fff9);
+}
+
+.syn {
+    margin-top: 60px;
+}
+
+.big {
+    font: 700 clamp(58px, 12vw, 112px)/1 Cinzel, serif;
+    text-shadow: 0 0 34px #fff6;
+}
+
+.big small {
+    display: block;
+    font: 500 15px "Noto Serif Thai", serif;
+    color: var(--mut);
+    letter-spacing: 0.1em;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    margin: 40px auto 0;
+    max-width: 640px;
+}
+
+dt,
+dd {
+    margin: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ln);
+}
+
+dt {
+    color: var(--mut);
+}
+
+/* Cover image */
+
+.cvw {
+    position: relative;
+    width: 250px;
+    max-width: 100%;
+    margin: auto;
+    animation: float 6s ease-in-out infinite;
+    perspective: 900px;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+.cvr {
+    position: relative;
+    transition: transform 0.2s;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    box-shadow:
+        0 20px 60px #000,
+        0 0 50px #ffffff30;
+    overflow: hidden;
+    border: 1px solid #fff4;
+}
+
+.cvr img {
+    display: block;
+    width: 100%;
+}
+
+.shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        #ffffff55 50%,
+        transparent 60%
+    );
+    transform: translateX(-120%);
+    animation: shn 5s 1s infinite;
+}
+
+@keyframes shn {
+    to {
+        transform: translateX(120%);
+    }
+}
+
+.orb {
+    position: absolute;
+    inset: -34px;
+    border: 1px dashed #ffffff55;
+    border-radius: 50%;
+    animation: rot 26s linear infinite;
+    pointer-events: none;
+}
+
+.orb i {
+    position: absolute;
+    left: 50%;
+    top: -7px;
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    background: #fff;
+    box-shadow: 0 0 16px #fff;
+    clip-path: polygon(
+        50% 0,
+        60% 40%,
+        100% 50%,
+        60% 60%,
+        50% 100%,
+        40% 60%,
+        0 50%,
+        40% 40%
+    );
+}
+
+/* Character banner */
+
+.banner {
+    height: clamp(240px, 46vw, 460px);
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+}
+
+.banner img {
+    position: absolute;
+    left: 0;
+    top: -15%;
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.05);
+    will-change: transform;
+}
+
+.banner::before,
+.banner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 35%;
+    z-index: 1;
+}
+
+.banner::before {
+    top: 0;
+    background: linear-gradient(#050507, transparent);
+}
+
+.banner::after {
+    bottom: 0;
+    background: linear-gradient(transparent, #050507);
+}
+
+/* ========================================
+   9. CHARACTER SLIDER
+======================================== */
+
+#chars {
+    max-width: none;
+    padding-bottom: 10px;
+    overflow-x: clip;
+    background: radial-gradient(
+        ellipse 55% 50% at 50% 45%,
+        color-mix(in srgb, var(--aura) 14%, transparent),
+        transparent
+    );
+}
+
+.stage {
+    position: relative;
+    height: 470px;
+    perspective: 1100px;
+    outline: none;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.card {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: min(270px, 68vw);
+    margin-left: calc(min(270px, 68vw) / -2);
+    height: 440px;
+    transition:
+        transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.7s,
+        filter 0.7s;
+}
+
+.tilt {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.15s;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style: preserve-3d;
+}
+
+.f {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.card.flip .f {
+    transform: rotateY(180deg);
+}
+
+.face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(180deg, #14161b, #050507 80%);
+    border: 1px solid var(--c);
+    box-shadow:
+        0 0 30px color-mix(in srgb, var(--c) 30%, transparent),
+        inset 0 0 0 6px #050507,
+        inset 0 0 0 7px #ffffff33;
+    overflow: hidden;
+}
+
+.face.bk {
+    transform: rotateY(180deg);
+    justify-content: center;
+}
+
+.face .ic {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    right: auto;
+    text-align: left;
+    font-size: 34px;
+    color: var(--c);
+    filter: drop-shadow(0 0 8px var(--c));
+    z-index: 3;
+}
+
+.face .ph {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    z-index: 0;
+}
+
+.face .ph::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 35%, #050507ee 82%);
+}
+
+.face.bk .ph {
+    filter: blur(5px) brightness(0.4);
+}
+
+.face h3,
+.face .role,
+.face p,
+.face .tags {
+    position: relative;
+    z-index: 2;
+}
+
+.face h3 {
+    font-size: 24px;
+    letter-spacing: 0.05em;
+}
+
+.face .role {
+    font: 500 14px "Noto Serif Thai", serif;
+    color: var(--mut);
+    margin: 2px 0 10px;
+}
+
+.face p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #d3d6e2;
+}
+
+.glare {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at var(--gx, 50%) var(--gy, 0%),
+        #ffffff2e,
+        transparent 45%
+    );
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.card.on:hover .glare {
+    opacity: 1;
+}
+
+.card.on .face {
+    animation: pl 2.4s infinite alternate;
+}
+
+@keyframes pl {
+    to {
+        box-shadow:
+            0 0 56px var(--c),
+            inset 0 0 0 6px #050507,
+            inset 0 0 0 7px #fff5;
+    }
+}
+
+.card.on .face:not(.bk) .ph {
+    animation: kb 9s ease-in-out infinite alternate;
+}
+
+@keyframes kb {
+    to {
+        transform: scale(1.09);
+    }
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.tags i {
+    font: normal 500 13px "Noto Serif Thai", serif;
+    border: 1px solid #fff6;
+    padding: 1px 12px;
+}
+
+.ctl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+.ctl button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: none;
+    border: 1px solid #fff5;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dots i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff3;
+}
+
+.dots i.on {
+    background: #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+.hint {
+    text-align: center;
+    color: var(--mut);
+    font-size: 14px;
+    margin: 10px 0 0;
+}
+
+/* ========================================
+   10. CLOCK
+======================================== */
+
+.rp {
+    max-width: none;
+    padding: 0;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    min-height: 0;
+}
+
+.rp .clock {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: min(300px, 52vw);
+    margin: 0;
+    z-index: 2;
+}
+
+.clock svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.ch {
+    transition: transform 1.8s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.clock:not(.on) .cl {
+    transform: translateX(-90px);
+}
+
+.clock:not(.on) .cr {
+    transform: translateX(90px);
+}
+
+.clock .tk {
+    opacity: 0;
+    transition: opacity 1s 1.4s;
+}
+
+.clock.on .tk {
+    opacity: 1;
+}
+
+.hm,
+.hh,
+.hs,
+.ring {
+    animation: none !important;
+}
+
+.hm,
+.hh,
+.hs {
+    transform-origin: 100px 100px;
+}
+
+@keyframes rot {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   11. RECOMMENDATIONS
+======================================== */
+
+.two > .row {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.two h2 {
+    text-align: left;
+}
+
+.two h2::after {
+    margin-left: 0;
+}
+
+.ck {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ck li {
+    padding: 6px 0 6px 34px;
+    position: relative;
+}
+
+.ck li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    text-shadow: 0 0 12px #fff;
+}
+
+.mis {
+    margin-top: 20px;
+}
+
+.mi {
+    display: inline-flex;
+    gap: 7px;
+    align-items: center;
+    margin: 4px 16px 4px 0;
+    color: var(--mut);
+    font: 500 13px Cinzel, serif;
+    letter-spacing: 0.1em;
+}
+
+.mi .i,
+.mi svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: #fff;
+}
+
+.mi svg:not(.i) {
+    fill: #fff;
+    stroke: none;
+}
+
+/* Radar chart */
+
+#radar svg {
+    width: 100%;
+    max-width: 340px;
+    display: block;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+#radar text {
+    font: 500 12px Cinzel, serif;
+    letter-spacing: 0.1em;
+    fill: #ECEEF3;
+    text-anchor: middle;
+}
+
+#radar .pl {
+    fill: #ffffff22;
+    stroke: #fff;
+    stroke-width: 1.6;
+    filter: drop-shadow(0 0 8px #fff);
+}
+
+/* ========================================
+   12. READING HERO
+======================================== */
+
+.rhero {
+    position: relative;
+    text-align: center;
+    border: 1px solid #ffffff2e;
+    padding: clamp(54px, 9vw, 100px) clamp(16px, 5vw, 56px);
+    background: radial-gradient(ellipse at 50% 0, #ffffff14, transparent 65%);
+}
+
+.rhero::before,
+.rhero::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border: 2px solid #fff;
+}
+
+.rhero::before {
+    top: -1px;
+    left: -1px;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.rhero::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: 0;
+    border-top: 0;
+}
+
+.kick {
+    font: 500 12px Cinzel, serif;
+    letter-spacing: 0.4em;
+    color: #cfd3df;
+    margin: 0 0 16px;
+}
+
+.bigic {
+    font-size: 54px;
+    filter: drop-shadow(0 0 14px #fff);
+    display: inline-block;
+    animation: float 5s ease-in-out infinite;
+}
+
+.rhero h2 {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.rhero h2 span {
+    text-shadow: 0 0 24px #fff9;
+}
+
+.lead2 {
+    color: var(--mut);
+    max-width: 680px;
+    margin: 0 auto 22px;
+}
+
+.cue {
+    display: inline-block;
+    color: #fff;
+    font-size: 34px;
+    animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/* ========================================
+   13. WHY READ CARDS
+======================================== */
+
+.rcard {
+    height: 100%;
+    padding: 26px;
+    border: 1px solid #ffffff26;
+    background: linear-gradient(145deg, #ffffff0d, #ffffff03);
+    transition: 0.4s;
+}
+
+.rcard:hover {
+    transform: translateY(-6px);
+    border-color: #fff;
+    box-shadow: 0 0 34px #ffffff26;
+}
+
+.rcard .i {
+    font-size: 34px;
+    filter: drop-shadow(0 0 8px #fff8);
+}
+
+.rcard h3 {
+    font-size: 19px;
+    margin: 14px 0 8px;
+}
+
+.rcard p {
+    margin: 0;
+    color: var(--mut);
+    font-size: 16px;
+}
+
+/* ========================================
+   14. ENDING AND WINGS
+======================================== */
+
+.end {
+    max-width: none;
+    position: relative;
+    overflow: hidden;
+    overflow-x: clip;
+    text-align: center;
+    color: #fff;
+    padding: 110px 22px;
+    --ep: max(22px, 7vw);
+    --stw: min(18vw, 128px);
+    padding-left: var(--ep);
+    padding-right: var(--ep);
+    background: radial-gradient(
+        ellipse 62% 55% at 50% 36%,
+        #2c2f3b 0%,
+        #101117 58%,
+        #050507 100%
+    );
+}
+
+.end > * {
+    position: relative;
+    z-index: 1;
+}
+
+.end .wg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.wl,
+.wr {
+    display: block;
+    will-change: transform;
+}
+
+.wl {
+    transform-origin: 89% 7%;
+}
+
+.wr {
+    transform-origin: 11% 7%;
+}
+
+.end .wing {
+    display: block;
+    width: min(
+        calc((100vw - 2 * var(--ep) - var(--stw) - 12px) / 2),
+        360px
+    );
+    height: auto;
+    fill: none;
+    overflow: visible;
+    filter: drop-shadow(0 0 22px #ffffff3d);
+}
+
+.wing path {
+    stroke: #f2f2f2;
+    stroke-width: 0.8;
+    stroke-opacity: 0.55;
+}
+
+.wr .wing {
+    transform: scaleX(-1);
+}
+
+.end .st {
+    display: block;
+    flex: none;
+    width: var(--stw);
+    height: auto;
+    margin: 0 6px;
+    fill: #fff;
+    filter:
+        drop-shadow(0 0 16px #fff)
+        drop-shadow(0 0 38px #ffffff88);
+    animation: rot 30s linear infinite;
+}
+
+.end h2 {
+    color: #fff;
+    margin: 6px 0 10px;
+    font-size: clamp(26px, 6vw, 50px);
+    letter-spacing: 0.25em;
+    text-shadow: 0 0 26px #fff6;
+}
+
+.end h2::after {
+    background: #fff;
+    box-shadow: 0 0 12px #fff;
+}
+
+.end .sys {
+    color: #d6d9e6;
+    font: 500 16px "Noto Serif Thai", serif;
+    letter-spacing: 0.06em;
+}
+
+/* Wing movement */
+
+.wg.rv .wl {
+    transform: rotate(-14deg) scale(0.85);
+}
+
+.wg.rv .wr {
+    transform: rotate(14deg) scale(0.85);
+}
+
+.wg.on .wl,
+.wg.on .wr {
+    transform: none;
+}
+
+.wg.on .wl {
+    animation: flapl 2.8s cubic-bezier(0.45, 0.05, 0.4, 1) 2.4s infinite;
+}
+
+.wg.on .wr {
+    animation: flapr 2.8s cubic-bezier(0.45, 0.05, 0.4, 1) 2.4s infinite;
+}
+
+.wg.on {
+    animation: lift 2.8s ease-in-out 2.4s infinite;
+}
+
+@keyframes flapl {
+    0%,
+    100% {
+        transform: rotate(0) scaleY(1);
+    }
+
+    38% {
+        transform: rotate(24deg) scaleY(0.94);
+    }
+
+    58% {
+        transform: rotate(-4deg) scaleY(1.02);
+    }
+}
+
+@keyframes flapr {
+    0%,
+    100% {
+        transform: rotate(0) scaleY(1);
+    }
+
+    38% {
+        transform: rotate(-24deg) scaleY(0.94);
+    }
+
+    58% {
+        transform: rotate(4deg) scaleY(1.02);
+    }
+}
+
+@keyframes lift {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    38% {
+        transform: translateY(5px);
+    }
+
+    58% {
+        transform: translateY(-9px);
+    }
+}
+
+/* Falling feathers */
+
+.ff {
+    position: absolute;
+    top: -6%;
+    width: calc(14px * var(--s));
+    pointer-events: none;
+    opacity: 0;
+    z-index: 0 !important;
+    animation: fall var(--t) linear infinite;
+    animation-delay: var(--dl);
+}
+
+.ff svg {
+    display: block;
+    width: 100%;
+    fill: #0a0a0a;
+    stroke: #0a0a0a;
+    stroke-width: 1;
+    animation: sway 3s ease-in-out infinite alternate;
+}
+
+@keyframes fall {
+    from {
+        top: -6%;
+        opacity: 0;
+    }
+
+    12%,
+    85% {
+        opacity: 0.7;
+    }
+
+    to {
+        top: 102%;
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    from {
+        transform: translateX(-14px) rotate(-30deg);
+    }
+
+    to {
+        transform: translateX(14px) rotate(40deg);
+    }
+}
+
+/* ========================================
+   15. RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 991px) {
+    .two .ck {
+        max-width: 430px;
+        margin: 0 auto;
+    }
+
+    .two h2 {
+        text-align: center;
+    }
+
+    .two h2::after {
+        margin: 16px auto 0;
+    }
+
+    .two .mis {
+        text-align: center;
+    }
+
+    #mood {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 760px) {
+    .win {
+        height: 170px;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero h1 {
+        font-size: clamp(30px, 9.5vw, 60px);
+        letter-spacing: 0.14em;
+        padding-left: 0.14em;
+    }
+
+    .hero .q,
+    .hero .sub {
+        letter-spacing: 0.14em;
+    }
+
+    .hero .sub {
+        font-size: 11px;
+    }
+
+    .kick {
+        letter-spacing: 0.22em;
+    }
+
+    .btn-orv {
+        letter-spacing: 0.1em;
+    }
+
+    .end h2 {
+        font-size: clamp(20px, 6.4vw, 50px);
+        letter-spacing: 0.1em;
+    }
+
+    .quote {
+        padding: 18px 16px;
+    }
+
+    .rhero {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    #intro p {
+        letter-spacing: 0.2em;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero h1 {
+        letter-spacing: 0.18em;
+    }
+
+    .end h2 {
+        letter-spacing: 0.12em;
+    }
+
+    .kick {
+        letter-spacing: 0.24em;
+    }
+
+    h2 {
+        letter-spacing: 0.03em;
+    }
+
+    .quote {
+        padding: 18px 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero h1 {
+        letter-spacing: 0.08em;
+    }
+}
+
+/* ========================================
+   16. ACCESSIBILITY
+======================================== */
+
+/* (reduced-motion block removed so animations always play) */
+/* ========================================
+   RESPONSIVE SPACING
+======================================== */
+
+:root {
+    --page-padding: clamp(16px, 4vw, 48px);
+    --content-width: 1040px;
+}
+
+/* ป้องกันขอบและขนาดองค์ประกอบเกินหน้าจอ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: clip;
+}
+
+/* เนื้อหาทั่วไป */
+section {
+    width: 100%;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding-inline: var(--page-padding);
+}
+
+/* ส่วนที่ต้องเต็มความกว้างจอ */
+.hero,
+#chars,
+.rp,
+.end,
+.banner {
+    max-width: none;
+}
+
+/* เนื้อหาภายในการ์ดและคอลัมน์ */
+.row {
+    min-width: 0;
+    margin-inline: 0;
+}
+
+.row > * {
+    min-width: 0;
+}
+
+/* รูปภาพไม่ล้นขอบ */
+img,
+video,
+canvas {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+/* นาฬิกาและกราฟ */
+.clock,
+#radar {
+    width: 100%;
+    max-width: 340px;
+    margin-inline: auto;
+}
+
+/* มือถือ */
+@media (max-width: 575px) {
+    :root {
+        --page-padding: 16px;
+    }
+
+    section {
+        padding-block: 56px;
+    }
+
+    .hero {
+        padding-inline: 12px;
+    }
+
+    .stage {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .end {
+        padding-inline: 16px;
+    }
+
+    .trio {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    dl {
+        grid-template-columns: 100px minmax(0, 1fr);
+    }
+}
+
+/* จอเล็กมาก */
+@media (max-width: 360px) {
+    :root {
+        --page-padding: 12px;
+    }
+
+    section {
+        padding-inline: 12px;
+    }
+
+    .face {
+        padding: 18px;
+    }
+}
+/* CLOCK FIX */
+#clock svg,
+.clock svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+/* หมุนรอบจุดศูนย์กลางของแต่ละชิ้น */
+#clock .ring,
+#clock .hh,
+#clock .hm,
+#clock .hs {
+    transform-box: view-box;
+    transform-origin: center;
+}
+
+/* ป้องกัน SVG ถูกยืดผิดสัดส่วน */
+#clock svg {
+    aspect-ratio: 1 / 1;
+}
+
+/* ========================================
+   FIX: พื้นหลังอวกาศส่วนท้าย ORV
+======================================== */
+
+.end {
+    background:
+        radial-gradient(
+            ellipse 62% 55% at 50% 45%,
+            rgba(44, 47, 59, 0.75) 0%,
+            rgba(16, 17, 23, 0.45) 58%,
+            transparent 100%
+        ),
+        linear-gradient(
+            to bottom,
+            #050507 0%,
+            #080a12 45%,
+            #050507 100%
+        );
+}
+/* Feather ripple (this rule was missing from the uploaded file) */
+.fw {
+    animation: none;
+}
+
+.wg.on .fw {
+    animation: fwf 2.8s ease-in-out infinite;
+    animation-delay: calc(2.4s + var(--lag, 0s));
+}
+
+@keyframes fwf {
+    0%,
+    100% {
+        transform: rotate(calc(var(--amp, 3deg) * -0.4));
+    }
+
+    38% {
+        transform: rotate(var(--amp, 3deg));
+    }
+
+    58% {
+        transform: rotate(calc(var(--amp, 3deg) * -1));
+    }
+}

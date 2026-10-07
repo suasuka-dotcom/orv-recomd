@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="th" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>มุมมองนักอ่านพระเจ้า · ORV</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Serif+Thai:wght@500;700&family=Sarabun:wght@400;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap 5.3.3 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- CSS ของเว็บไซต์ -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SVG Icons -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <symbol id="book" viewBox="0 0 24 24">
+                <path d="M2 5c3.5-1.8 7-1.6 10 1 3-2.6 6.5-2.8 10-1v13c-3.5-1.8-7-1.6-10 1-3-2.6-6.5-2.8-10-1z M12 6v13"/>
+            </symbol>
+
+            <symbol id="sword" viewBox="0 0 24 24">
+                <path d="M12 1.5l2.2 3.5v11h-4.4V5z M6.5 16h11 M12 16v5.5 M10 21.5h4"/>
+            </symbol>
+
+            <symbol id="quill" viewBox="0 0 24 24">
+                <path d="M21 2.5C12 2.5 6.5 8 5.5 15.5L3 21.5l6-2.5C16.5 18 21.5 12 21 2.5z M5.5 15.5L15 6.5 M9 14l5 .5"/>
+            </symbol>
+
+            <symbol id="star8" viewBox="0 0 100 100">
+                <path d="M50 0L56 44L100 50L56 56L50 100L44 56L0 50L44 44Z"/>
+                <path
+                    transform="rotate(45 50 50) translate(15 15) scale(.7)"
+                    d="M50 0L56 44L100 50L56 56L50 100L44 56L0 50L44 44Z"
+                />
+            </symbol>
+
+            <symbol id="wing" viewBox="0 0 160 200">
+                <path d="M160 10C110 0 50 25 25 75 12 102 6 135 0 185 25 160 35 135 50 122 48 145 52 165 58 190 76 160 82 140 90 125 95 145 105 160 118 172 120 140 122 120 132 100 136 120 146 135 160 140Z"/>
+                <path
+                    fill="none"
+                    stroke="#fff"
+                    stroke-width="1.5"
+                    d="M150 30C100 40 55 75 30 120M140 55C100 65 70 95 52 135M130 85C100 95 85 115 70 145"
+                />
+            </symbol>
+
+            <symbol id="bulb" viewBox="0 0 24 24">
+                <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.7.6 1 1.3 1 2.1h5c0-.8.3-1.5 1-2.1A6 6 0 0 0 12 3z"/>
+            </symbol>
+
+            <symbol id="orbit" viewBox="0 0 24 24">
+                <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM3 12c0-3 4-5.5 9-5.5s9 2.5 9 5.5-4 5.5-9 5.5S3 15 3 12z"/>
+            </symbol>
+
+            <symbol id="puzzle" viewBox="0 0 24 24">
+                <path d="M10 4a2 2 0 1 1 4 0v2h4v4h-2a2 2 0 1 0 0 4h2v4h-4v-2a2 2 0 1 0-4 0v2H6v-4H4a2 2 0 1 1 0-4h2V6h4z"/>
+            </symbol>
+
+            <symbol id="users" viewBox="0 0 24 24">
+                <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M16 5.5a3 3 0 0 1 0 5.5M17 14c2.5.5 4 2.5 4 6"/>
+            </symbol>
+
+            <symbol id="search" viewBox="0 0 24 24">
+                <path d="M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15zM16 16l5 5"/>
+            </symbol>
+
+            <symbol id="branch" viewBox="0 0 24 24">
+                <path d="M6 3v12M6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 9c0 4-6 4-12 6"/>
+            </symbol>
+
+            <symbol id="heart" viewBox="0 0 24 24">
+                <path d="M12 20s-8-4.8-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6.2-8 11-8 11z"/>
+            </symbol>
+
+            <symbol id="notes" viewBox="0 0 24 24">
+                <path d="M5 3h11l3 3v15H5zM8 9h8M8 13h8M8 17h5"/>
+            </symbol>
+
+            <symbol id="sprout" viewBox="0 0 24 24">
+                <path d="M12 21V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3.5 2.5-5.5 7-5.5 0 3.5-2.5 5.5-7 5.5z"/>
+            </symbol>
+
+            <symbol id="sparkle" viewBox="0 0 24 24">
+                <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/>
+            </symbol>
+
+            <symbol id="moon" viewBox="0 0 24 24">
+                <path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>
+            </symbol>
+
+            <symbol id="eye" viewBox="0 0 24 24">
+                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </symbol>
+
+            <symbol id="down" viewBox="0 0 24 24">
+                <path d="M6 9l6 6 6-6"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Background effects -->
+    <canvas id="sky"></canvas>
+    <div id="papers" aria-hidden="true"></div>
+    <div id="prog"></div>
+    <div id="cur"></div>
+
+    <!-- Intro -->
+    <div id="intro">
+        <button id="skip">ข้าม</button>
+
+        <div>
+            <svg class="istar" viewBox="0 0 100 100">
+                <use href="#star8"></use>
+            </svg>
+
+            <p>[ OMNISCIENT READER'S VIEWPOINT ]</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md fixed-top orv-nav">
+        <div class="container">
+
+            <a class="navbar-brand" href="#top">
+                <svg viewBox="0 0 100 100" width="16" height="16" fill="currentColor">
+                    <use href="#star8"></use>
+                </svg>
+                ORV
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#nv"
+                aria-controls="nv"
+                aria-expanded="false"
+                aria-label="เมนู"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nv">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#info">ข้อมูลเรื่อง</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#chars">ตัวละคร</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reading-hero">เรื่องราว</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#why-read">ทำไมต้องอ่าน</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- Hero section -->
+        <section class="hero" id="top">
+
+            <div class="straps">
+                <div class="strap"></div>
+                <div class="strap"></div>
+                <div class="strap"></div>
+                <div class="strap"></div>
+                <div class="strap"></div>
+            </div>
+
+            <div class="win">
+                <i></i>
+                <i></i>
+            </div>
+
+            <div class="seat"></div>
+
+            <div class="t">
+                <div class="q">「 เรื่องนี้เขียนขึ้นเพื่อผู้อ่านเพียงคนเดียว 」</div>
+
+                <h1>
+                    <b>O</b>MNISCIENT<br>
+                    <b>R</b>EADER<br>
+                    <b>V</b>IEWPOINT
+                </h1>
+
+                <div class="th">มุมมองนักอ่านพระเจ้า</div>
+                <div class="sub">STARSTREAM · PLANETARY SYSTEM 8612</div>
+
+                <a class="btn btn-orv" href="#info">ข้อมูลเรื่อง</a>
+            </div>
+
+        </section>
+
+        <!-- Divider -->
+        <div class="divider" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+                <use href="#star8"></use>
+            </svg>
+        </div>
+
+        <!-- Story information -->
+        <section class="container">
+
+            <div class="trio rv">
+                <div>
+                    <svg class="i"><use href="#book"></use></svg>
+                    READER
+                </div>
+
+                <div>
+                    <svg class="i"><use href="#sword"></use></svg>
+                    PROTAGONIST
+                </div>
+
+                <div>
+                    <svg class="i"><use href="#quill"></use></svg>
+                    WRITER
+                </div>
+            </div>
+
+            <div class="syn rv row align-items-center g-4 g-lg-5">
+
+                <div class="col-12 col-md-4 col-lg-3 offset-lg-1">
+                    <div class="cvw">
+                        <div class="orb"><i></i></div>
+
+                        <div class="cvr" id="cvr">
+                            <img
+                                src="images/cover.jpg"
+                                alt="ปกนิยาย มุมมองนักอ่านพระเจ้า"
+                            >
+                            <div class="shine"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-8 col-lg-7">
+                    <div class="big">
+                        3,149
+                        <small>ตอนที่เขาอ่านจนจบ</small>
+                    </div>
+
+                    <p>
+                        คิมดกจา พนักงานออฟฟิศธรรมดา คือผู้อ่านเพียงคนเดียว
+                        ที่อ่านนิยายเรื่อง “สามวิธีเอาชีวิตรอดในโลกที่ล่มสลาย”
+                        จนจบ แต่ในวันที่นิยายจบลง โลกของเขากลับกลายเป็นโลกเดียวกับในเรื่อง
+                        และเขากลายเป็นคนเดียวที่รู้ว่าเหตุการณ์ต่อไปจะเกิดอะไรขึ้น
+                    </p>
+                </div>
+
+            </div>
+
+            <dl id="info" class="rv">
+                <dt>ชื่อเรื่อง</dt>
+                <dd>มุมมองนักอ่านพระเจ้า</dd>
+
+                <dt>ชื่ออังกฤษ</dt>
+                <dd>Omniscient Reader’s Viewpoint</dd>
+
+                <dt>ผู้เขียน</dt>
+                <dd>singNsong</dd>
+
+                <dt>ประเภท</dt>
+                <dd>Action / Fantasy / Apocalypse / Psychological</dd>
+
+                <dt>รูปแบบ</dt>
+                <dd>Web Novel · จบแล้ว</dd>
+            </dl>
+
+        </section>
+
+        <!-- Character banner -->
+        <div class="banner" id="banner">
+            <img src="images/trio.jpg" alt="">
+        </div>
+
+        <!-- Characters -->
+        <section id="chars">
+            <h2>CHARACTERS</h2>
+
+            <div
+                class="stage"
+                id="stage"
+                tabindex="0"
+                aria-label="สไลด์ตัวละคร"
+            ></div>
+
+            <div class="ctl">
+                <button id="pv" aria-label="ก่อนหน้า">‹</button>
+                <div class="dots" id="dots"></div>
+                <button id="nx" aria-label="ถัดไป">›</button>
+            </div>
+
+            <p class="hint">
+                ลากหรือปัดเพื่อเลื่อน · แตะการ์ดกลางเพื่อพลิก
+            </p>
+        </section>
+
+        <!-- Clock animation -->
+        <div class="rp">
+            <div class="clock" id="clock">
+                <svg viewBox="0 0 200 200">
+
+                    <g class="ch cl">
+                        <path d="M100 6A94 94 0 0 0 100 194Z" fill="#fff"></path>
+                    </g>
+
+                    <g class="ch cr">
+                        <path d="M100 6A94 94 0 0 1 100 194Z" fill="#000"></path>
+                    </g>
+
+                    <g class="tk" style="mix-blend-mode: difference;" stroke="#fff" fill="none">
+                        <circle cx="100" cy="100" r="94" stroke-width="3"></circle>
+
+                        <circle
+                            class="ring"
+                            cx="100"
+                            cy="100"
+                            r="80"
+                            stroke-width="3"
+                            stroke-dasharray="1.5 3.5"
+                        ></circle>
+
+                        <g stroke-width="3">
+                            <path d="M100 14v14M100 172v14M14 100h14M172 100h14M143 25l-7 12M175 57l-12 7M175 143l-12-7M143 175l-7-12M57 175l7-12M25 143l12-7M25 57l12 7M57 25l7 12"></path>
+                        </g>
+
+                        <path class="hh" stroke-width="5" d="M100 100V52"></path>
+                        <path class="hm" stroke-width="3.5" d="M100 100V30"></path>
+                        <path class="hs" stroke-width="1.5" d="M100 112V24"></path>
+
+                        <circle cx="100" cy="100" r="5" fill="#fff"></circle>
+                    </g>
+
+                </svg>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><use href="#star8"></use></svg>
+        </div>
+
+        <!-- Recommendations and mood -->
+        <section class="two container">
+            <div class="row g-5">
+
+                <div class="col-12 col-lg-6 rv">
+                    <h2>YOU MAY LIKE</h2>
+
+                    <ul class="ck">
+                        <li>ตัวเอกที่ใช้ไหวพริบมากกว่าพลัง</li>
+                        <li>Apocalypse / โลกที่กำลังล่มสลาย</li>
+                        <li>ตัวละครที่มีความสัมพันธ์ซับซ้อน</li>
+                        <li>การย้อนกลับ / การวนซ้ำของเวลา</li>
+                        <li>เรื่องที่ค่อย ๆ เปิดเผยความจริง</li>
+                        <li>นิยายที่มี Lore ขนาดใหญ่</li>
+                        <li>เรื่องที่ตั้งคำถามเกี่ยวกับ “คนอ่าน ตัวละคร และเรื่องราว”</li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-lg-6 rv" id="mood">
+                    <h2>MOOD</h2>
+
+                    <div id="radar"></div>
+
+                    <p class="mis">
+                        <span class="mi">
+                            <svg class="i"><use href="#sword"></use></svg>
+                            Action
+                        </span>
+
+                        <span class="mi">
+                            <svg class="i"><use href="#moon"></use></svg>
+                            Dark
+                        </span>
+
+                        <span class="mi">
+                            <svg class="i"><use href="#eye"></use></svg>
+                            Psychological
+                        </span>
+
+                        <span class="mi">
+                            <svg viewBox="0 0 100 100"><use href="#star8"></use></svg>
+                            Epic
+                        </span>
+
+                        <span class="mi">
+                            <svg class="i"><use href="#heart"></use></svg>
+                            Emotional
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Story question -->
+        <div class="divider" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><use href="#star8"></use></svg>
+        </div>
+
+        <section class="container" id="reading-hero">
+            <div class="rhero rv">
+
+                <div class="bigic">
+                    <svg class="i"><use href="#book"></use></svg>
+                </div>
+
+                <p class="kick">A STORY THAT CHANGES EVERYTHING</p>
+
+                <h2>
+                    ถ้าวันหนึ่ง...<br>
+                    โลกที่คุณอ่านในนิยาย<br>
+                    <span>กลายเป็นโลกแห่งความจริงล่ะ?</span>
+                </h2>
+
+                <p class="lead2">
+                    เมื่อผู้อ่านธรรมดากลายเป็นคนเดียวที่รู้ตอนจบของโลก
+                    เขาจะเปลี่ยนเรื่องราวที่ถูกกำหนดไว้ได้หรือไม่?
+                </p>
+
+                <a class="cue" href="#why-read" aria-label="เลื่อนลง">
+                    <svg class="i"><use href="#down"></use></svg>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Why read ORV -->
+        <div class="divider" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><use href="#star8"></use></svg>
+        </div>
+
+        <section class="container" id="why-read">
+
+            <p class="kick text-center">WHY SHOULD YOU READ IT?</p>
+
+            <h2>
+                <svg
+                    class="i"
+                    style="font-size: .9em; margin-right: .3em; vertical-align: -.1em;"
+                >
+                    <use href="#bulb"></use>
+                </svg>
+                ทำไมเราจึงควรอ่านเรื่องนี้?
+            </h2>
+
+            <p class="lead2 text-center">
+                มุมมองนักอ่านพระเจ้าไม่ได้มีเพียงการผจญภัยและการเอาชีวิตรอด
+                แต่ยังชวนให้เราตั้งคำถามกับเรื่องราว ความสัมพันธ์
+                และมุมมองที่เรามีต่อโลก
+            </p>
+
+            <div class="row g-3 g-md-4 mt-2">
+
+                <div class="col-12 col-md-6">
+                    <article class="rcard rv" style="--d: 0s;">
+                        <svg class="i"><use href="#orbit"></use></svg>
+                        <h3>เปิดจินตนาการ</h3>
+                        <p>
+                            พาผู้อ่านเข้าสู่โลกแฟนตาซีที่มีกฎเกณฑ์และเหตุการณ์ซับซ้อน
+                            ชวนให้จินตนาการถึงโลกที่แตกต่างจากชีวิตประจำวัน
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <article class="rcard rv" style="--d: .12s;">
+                        <svg class="i"><use href="#puzzle"></use></svg>
+                        <h3>ฝึกคิดวิเคราะห์</h3>
+                        <p>
+                            การติดตามเงื่อนงำ แผนการ และความเชื่อมโยงของเหตุการณ์
+                            ชวนให้ผู้อ่านลองคาดเดาและพิจารณาข้อมูลอย่างเป็นเหตุเป็นผล
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <article class="rcard rv" style="--d: .24s;">
+                        <svg class="i"><use href="#users"></use></svg>
+                        <h3>เข้าใจความสัมพันธ์</h3>
+                        <p>
+                            ตัวละครมีเป้าหมายและความเชื่อแตกต่างกัน
+                            ทำให้เห็นว่าความไว้ใจ การร่วมมือ
+                            และการตัดสินใจส่งผลต่อความสัมพันธ์อย่างไร
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <article class="rcard rv" style="--d: .36s;">
+                        <svg class="i"><use href="#search"></use></svg>
+                        <h3>มองเรื่องราวหลายมุม</h3>
+                        <p>
+                            เรื่องราวตั้งคำถามเกี่ยวกับผู้อ่าน ผู้เขียน และตัวละคร
+                            ชวนให้มองความหมายของเรื่องเดียวกันจากหลายมุมมอง
+                        </p>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Ending -->
+        <section class="end">
+
+            <div class="wg rv">
+                <div class="wl">
+                    <svg class="wing" viewBox="-75 0 370 335" aria-hidden="true"></svg>
+                </div>
+
+                <svg class="st" viewBox="0 0 100 100" aria-hidden="true">
+                    <use href="#star8"></use>
+                </svg>
+
+                <div class="wr">
+                    <svg class="wing" viewBox="-75 0 370 335" aria-hidden="true"></svg>
+                </div>
+            </div>
+
+            <h2>「 THANK YOU 」</h2>
+            <div class="sys">[ ขอให้สนุกกับการอ่านนะ ]</div>
+
+        </section>
+
+    </main>
+
+    </div>
+</section>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript ของเว็บไซต์ -->
+    <script src="script.js"></script>
+
+</body>
+</html>
